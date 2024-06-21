@@ -143,7 +143,7 @@ Instructions on setting up your project using Colab. Please follow the link belo
 <a href="https://colab.research.google.com/github/nuwandda/sdxl-lora-training/blob/main/SDXL_DreamBooth_LoRA.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
 
 ## Getting Started - Streamlit Demo <a name="streamlit"></a>
-To run the streamlit demo with the pretrained model trained with marble statue dataset, use the following commands.
+To run the Streamlit inference demo with the pretrained model trained with marble statue dataset, use the following commands.
 
 ### Install dependencies
 To install the required packages, in a terminal, type:
