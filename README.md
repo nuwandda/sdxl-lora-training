@@ -138,7 +138,7 @@ There are two precision levels in floating-point precision, 32-bit floating poin
 
 <!-- GETTING STARTED -->
 ## Getting Started - Colab Training <a name="colab"></a>
-Instructions on setting up your project using Colab. Please follow the link below to try it out.
+Instructions on setting up your project using Colab. Please follow the link below to train it yourself. You can find the pretrained model in "statue_LoRa" folder.
 
 <a href="https://colab.research.google.com/github/nuwandda/sdxl-lora-training/blob/main/SDXL_DreamBooth_LoRA.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
 
