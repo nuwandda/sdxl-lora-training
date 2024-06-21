@@ -50,8 +50,8 @@ def create_metadata_jsonl(image_paths, texts, data_focus='statue', output_file='
         for image_path, text in zip(image_paths, texts):
             # Create a dictionary for each pair
             data = {
-                "file_name": image_path,
-                "text": caption_prefix + text
+                "file_name": image_path.split('/')[-1],
+                "prompt": caption_prefix + text
             }
             # Write the dictionary as a JSON object in a new line
             f.write(json.dumps(data) + '\n')
@@ -117,7 +117,7 @@ def main():
         image_paths.append(path)
 
     # Create metadata
-    create_metadata_jsonl(image_paths, annotations, data_focus=args.focus, output_file=args.images_path + '/metadata.json')
+    create_metadata_jsonl(image_paths, annotations, data_focus=args.focus, output_file=args.images_path + '/metadata.jsonl')
 
 
 if __name__ == "__main__":
