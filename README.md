@@ -67,6 +67,8 @@ The main steps of this fine-tuning approach are:
 
 5. Selective Parameter Update: Update only the identified low-rank components, thereby optimizing the model's efficiency while preserving or improving its performance metrics.
 
+<p align="right">(<a href="#readme-top">Back to Top</a>)</p>
+
 ## Used Technologies <a name="technologies"></a>
 ### Accelerate
 Accelerate is a versatile and user-friendly library designed by Hugging Face to streamline and optimize the process of training and deploying machine learning models on a variety of hardware setups. It offers a unified interface that abstracts the complexities of configuring and managing different distributed training environments, such as multi-GPU and TPU setups. Accelerate makes it easy for developers to scale their PyTorch code, focusing on model development rather than the underlying infrastructure.
@@ -120,6 +122,8 @@ Benefits of using PEFT:
 
 * Versatility: Can be applied to a wide range of models and tasks, providing a versatile tool for machine learning practitioners.
 
+<p align="right">(<a href="#readme-top">Back to Top</a>)</p>
+
 ## Used Hyperparameters <a name="hyperparameters"></a>
 ### Gradient Checkpointing
 Backpropagation, which computes these gradients, requires storing intermediate activations of the model. This can be memory-intensive, especially for large models like SDXL. Gradient checkpointing addresses this memory challenge by trading off memory usage for additional computation time. Instead of storing all intermediate activations throughout the entire model during backpropagation, gradient checkpointing periodically recomputes activations starting from previously saved checkpoints. This approach reduces the peak memory usage by recomputing activations on-the-fly during the backward pass. By using gradient checkpointing, the memory overhead of storing all intermediate activations is reduced. This is particularly beneficial when fine-tuning models that have undergone extensive parameter adjustments (DreamBooth) and selective updates (LoRA). While gradient checkpointing reduces memory consumption, it introduces additional computational overhead due to recomputation. The trade-off between memory and computation needs to be balanced based on the available resources and the specific fine-tuning objectives.
@@ -129,7 +133,6 @@ Adam (Adaptive Moment Estimation) is a popular optimization algorithm widely use
 
 ### Mixed-Precision FP16
 There are two precision levels in floating-point precision, 32-bit floating point and 16-bit floating point. 32-bit floating point is the standard precision used in most deep learning frameworks for storing model parameters and performing computations. It provides high numerical accuracy but requires more memory and computational resources. 16-bit floating point is the reduced precision format that uses half the memory of 32-bit floating point. It accelerates computations, especially on GPUs with tensor cores, while maintaining sufficient numerical precision for many deep learning tasks. Utilizing 16-bit precision can significantly speed up training times, especially for large models like SDXL that involve complex computations. Also, reduced precision requires less memory bandwidth, making it feasible to train larger models or batch sizes within available hardware limits.
-
 
 <p align="right">(<a href="#readme-top">Back to Top</a>)</p>
 
