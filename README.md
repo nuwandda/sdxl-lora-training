@@ -1,8 +1,16 @@
 # SDXL LoRa Training
 <a name="readme-top"></a>
 
+# Table of contents
+1. [Introduction](#introduction)
+2. [Which Fine-Tuning Method?](#which-model)
+3. [Used Technologies](#technologies)
+4. [Used Hyperparameters](#hyperparameters)
+4. [Getting Started - Colab Training](#colab)
+4. [Getting Started - Streamlit](#streamlit)
+
 <!-- ABOUT THE PROJECT -->
-## Introduction
+## Introduction <a name="introduction"></a>
 In today's rapidly evolving AI landscape, the demand for high-quality, annotated datasets and customized models is greater than ever. To address this need, our project aims to develop an innovative module that seamlessly integrates data annotation with model fine-tuning. This module will leverage cutting-edge language models such as Claude or ChatGPT-4 to label provided customer images, and subsequently fine-tune a Stable Diffusion XL (SDXL) model using these annotations.
 
 ### Project Goal
@@ -26,7 +34,7 @@ This project is designed to enhance the efficiency and accuracy of AI model deve
 
 ![sample_image](sample_images/sample_output.jpeg "Results")
 
-## Which Fine-Tuning Method?
+## Which Fine-Tuning Method? <a name="which-model"></a>
 ### Prefered Method
 There are diffrent types of fine-tuning. The choice of fine-tuning methods is depending on the system specifications and usage. LoRA (Low-Rank Adaptation) models offer greater efficiency and compactness. They function like adapters that build upon existing checkpoint models. Specifically, LoRA models update only a subset of parameters from the checkpoint model, thereby enhancing its capabilities. This approach allows LoRA models to maintain a smaller size, typically ranging from 2MB to 500MB, and enables frequent fine-tuning for specific concepts or styles.
 
@@ -59,7 +67,7 @@ The main steps of this fine-tuning approach are:
 
 5. Selective Parameter Update: Update only the identified low-rank components, thereby optimizing the model's efficiency while preserving or improving its performance metrics.
 
-## Used Technologies
+## Used Technologies <a name="technologies"></a>
 ### Accelerate
 Accelerate is a versatile and user-friendly library designed by Hugging Face to streamline and optimize the process of training and deploying machine learning models on a variety of hardware setups. It offers a unified interface that abstracts the complexities of configuring and managing different distributed training environments, such as multi-GPU and TPU setups. Accelerate makes it easy for developers to scale their PyTorch code, focusing on model development rather than the underlying infrastructure.
 
@@ -112,7 +120,7 @@ Benefits of using PEFT:
 
 * Versatility: Can be applied to a wide range of models and tasks, providing a versatile tool for machine learning practitioners.
 
-## Used Hyperparameters
+## Used Hyperparameters <a name="hyperparameters"></a>
 ### Gradient Checkpointing
 Backpropagation, which computes these gradients, requires storing intermediate activations of the model. This can be memory-intensive, especially for large models like SDXL. Gradient checkpointing addresses this memory challenge by trading off memory usage for additional computation time. Instead of storing all intermediate activations throughout the entire model during backpropagation, gradient checkpointing periodically recomputes activations starting from previously saved checkpoints. This approach reduces the peak memory usage by recomputing activations on-the-fly during the backward pass. By using gradient checkpointing, the memory overhead of storing all intermediate activations is reduced. This is particularly beneficial when fine-tuning models that have undergone extensive parameter adjustments (DreamBooth) and selective updates (LoRA). While gradient checkpointing reduces memory consumption, it introduces additional computational overhead due to recomputation. The trade-off between memory and computation needs to be balanced based on the available resources and the specific fine-tuning objectives.
 
@@ -126,12 +134,12 @@ There are two precision levels in floating-point precision, 32-bit floating poin
 <p align="right">(<a href="#readme-top">Back to Top</a>)</p>
 
 <!-- GETTING STARTED -->
-## Getting Started - Colab Training
+## Getting Started - Colab Training <a name="colab"></a>
 Instructions on setting up your project using Colab. Please follow the link below to try it out.
 
 <a href="https://colab.research.google.com/github/nuwandda/sdxl-lora-training/blob/main/SDXL_DreamBooth_LoRA.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
 
-## Getting Started - Streamlit Demo
+## Getting Started - Streamlit Demo <a name="streamlit"></a>
 To run the streamlit demo with the pretrained model trained with marble statue dataset, use the following commands.
 
 ### Install dependencies
