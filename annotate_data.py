@@ -34,7 +34,7 @@ def resize_and_convert_to_base64(image_path, max_size=(768, 768), image_extensio
             return base64.b64encode(resized_image_file.read()).decode('utf-8')
         
 
-def create_metadata_jsonl(image_paths, texts, output_file='data/metadata.jsonl'):
+def create_metadata_jsonl(image_paths, texts, data_focus='statue', output_file='data/metadata.jsonl'):
     """
     Creates a metadata.jsonl file from lists of image paths and texts.
     
@@ -45,12 +45,13 @@ def create_metadata_jsonl(image_paths, texts, output_file='data/metadata.jsonl')
     if len(image_paths) != len(texts):
         raise ValueError("The length of image paths and texts must be the same.")
     
+    caption_prefix = 'a photo of CUS ' + data_focus + ', '
     with open(output_file, 'w') as f:
         for image_path, text in zip(image_paths, texts):
             # Create a dictionary for each pair
             data = {
                 "file_name": image_path,
-                "text": text
+                "text": caption_prefix + text
             }
             # Write the dictionary as a JSON object in a new line
             f.write(json.dumps(data) + '\n')
@@ -100,6 +101,7 @@ def main():
     parser.add_argument('--images_path', type=str, required=True, help='Path to the images.')
     parser.add_argument('--image_extension', type=str, required=True, help='Extension of the images.')
     parser.add_argument('--secret_key', type=str, help='Secret key as a string.')
+    parser.add_argument('--focus', type=str, help='Type the main object in the dataset. Like statue or kid')
 
     # Parse the arguments
     args = parser.parse_args()
@@ -115,7 +117,7 @@ def main():
         image_paths.append(path)
 
     # Create metadata
-    create_metadata_jsonl(image_paths, annotations, output_file=args.images_path + '/metadata.json')
+    create_metadata_jsonl(image_paths, annotations, data_focus=args.focus, output_file=args.images_path + '/metadata.json')
 
 
 if __name__ == "__main__":
